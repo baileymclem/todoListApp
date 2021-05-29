@@ -2,7 +2,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var TasksSchema = new Schema({
+var TaskSchema = new Schema({
     name: {
         type: String,
         required: "Task Name"

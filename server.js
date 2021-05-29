@@ -9,8 +9,11 @@ var express = require("express"),
     mongoose.Promise = global.Promise;
     mongoose.connect("mongodb://localhost/Tododb");
 
-    app.use(express.urlencoded());
+    app.use(express.urlencoded({ extended: true }));
     app.use(express.json()); // parse JSON bodies
+    app.use(function(req, res) {
+        res.status(404).send({url: req.originalUrl + "not found"})
+    });
 
     var routes = require("./api/routes/todoListRoutes") // importing route
     routes(app); // register the route
